@@ -1,53 +1,21 @@
-import { useState, useEffect } from "react";
-import { supabase } from "./client";
-import { BrowserRouter, useRoutes } from 'react-router-dom';
-import ShowCreators from './pages/ShowCreators';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import ViewCreator from './pages/ViewCreator';
 import EditCreator from './pages/EditCreator';
 import AddCreator from './pages/AddCreator';
-
-function Router () {
-  let router = useRoutes([
-    {
-    path: "/",
-    element: <ShowCreators />,
-    },
-    {
-      path: "view",
-      element: <ViewCreator />
-    },
-    {
-      path: "edit",
-      element: <EditCreator />
-    },
-    {
-      path: "add",
-      element: <AddCreator />
-    }
-  ])
-  return router;
-
-}
+import HomePage from "./pages/HomePage";
 
 function App() {
-  const [creators, setCreators] = useState([])
-
-  useEffect(() => {
-    const fetchData = async() => {
-      const { data, error } = await supabase.from('creators').select()
-      // console.log(data)
-      setCreators([...creators, data])
-    }
-    fetchData();
-    
-  }, [])
   
-
   return (
     <BrowserRouter>
-        <Router />
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="edit/:id" element={<EditCreator />} />
+        <Route path="add" element={<AddCreator />} />
+        <Route path="view/:id" element={<ViewCreator />} />
+      </Routes>
     </BrowserRouter>
-  )
+  );
 }
 
 export default App

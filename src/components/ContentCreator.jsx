@@ -1,13 +1,20 @@
 // display content creator information in this component
-function ContentCreator({name, URL, description, image}) {
+import { Link } from "react-router-dom";
+
+function ContentCreator({creator: {id, name, url, description, imageURL}}) {
     return (
         <div>
-        <h1>{name}</h1>
-        <h1>{URL}</h1>
-        <h1>{description}</h1>
-        <h1>{image}</h1>
+            <h1>Name: {name}</h1>
+            <h1>URL: {url}</h1>
+            <h1>Description: {description}</h1>
+            <h1>Image: {imageURL}</h1>
+            <Link to={`/view/${id}`} >
+                More Info 
+            </Link>
+            <Link to={`/edit/${id}`}>
+                Edit Info 
+            </Link>
         </div>
-       
     )
 }
 
