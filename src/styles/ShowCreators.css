@@ -5,3 +5,9 @@
     height: 80vh;
     text-align: center;
   }
+
+.container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
