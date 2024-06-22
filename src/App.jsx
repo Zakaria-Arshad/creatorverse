@@ -3,6 +3,7 @@ import ViewCreator from './pages/ViewCreator';
 import EditCreator from './pages/EditCreator';
 import AddCreator from './pages/AddCreator';
 import HomePage from "./pages/HomePage";
+import '@picocss/pico';
 
 function App() {
   

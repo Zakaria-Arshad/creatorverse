@@ -1,6 +1,8 @@
 import { useParams, Link } from "react-router-dom";
 import { useState, useEffect } from "react";
+import ContentCreator from "../components/ContentCreator";
 import { supabase } from "../client";
+import '../styles/ViewCreator.css'
 
 function ViewCreator() {
     const { id } = useParams()
@@ -30,17 +32,12 @@ function ViewCreator() {
     }, [id]);
 
     return (
-        <div>
-            <h1>View Creator</h1>
-            <h1>Name: {creatorInfo.name}</h1>
-            <h1>URL: {creatorInfo.url}</h1>
-            <h1>Description: {creatorInfo.description}</h1>
-            <h1>Image: {creatorInfo.imageURL}</h1>
-            <Link to={`/edit/${id}`}>
-                Edit Info 
-            </Link>
+        <div className="container">
+        <h1>View Creator</h1>
+        <ContentCreator creator={{ id: id, name: creatorInfo.name, url: creatorInfo.url, description: creatorInfo.description, imageURL: creatorInfo.imageURL }} />
+        <Link to="/" className="fixed-return-link">Return to Home</Link>
         </div>
-        
+
     )
 }
 

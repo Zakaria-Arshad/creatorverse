@@ -1,0 +1,36 @@
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    padding: 0 20px;
+  }
+  
+  .header-container h1 {
+  margin: 0;
+  position: absolute; 
+  left: 50%; 
+  transform: translateX(-50%);
+  text-align: center;
+}
+  
+  .add-button-link {
+    text-align: right;
+  }
+  
+  .add-button {
+    background-color: black;
+    color: white;
+    text-decoration: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .add-button:hover {
+    background-color: darkgray; 
+  }
+  
+  

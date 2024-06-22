@@ -1,0 +1,35 @@
+.button-container {
+    display: flex;
+    gap: 10px; 
+    justify-content: center; 
+  }
+  
+.black-button {
+    background-color: black;
+    color: white;
+    text-decoration: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-align: center;
+    display: inline-block;
+}
+
+.black-button:hover {
+    background-color: darkgray; 
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.card footer p {
+    display: flex;
+    justify-content: center; 
+}
+
+.image {
+    max-width: 150px;
+    display: block;
+}

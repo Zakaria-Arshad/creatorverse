@@ -1,12 +1,13 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
-import { supabase } from "../client.js"
-import { useNavigate } from 'react-router-dom';
+import { useParams, useNavigate, Link } from "react-router-dom";
+import { supabase } from "../client.js";
+import '@picocss/pico'; 
+import '../styles/EditCreator.css'; 
 
 function EditCreator() {
-    const { id } = useParams();
-    const navigate = useNavigate();
-  
+  const { id } = useParams();
+  const navigate = useNavigate();
+
   const [formData, setFormData] = useState({
     name: '',
     url: '',
@@ -36,39 +37,48 @@ function EditCreator() {
 
     fetchData();
   }, [id]);
-    
-      const handleChange = (e) => {
-        const { name, value } = e.target;
-        setFormData({
-          ...formData,
-          [name]: value
-        });
-      };
-    
-      const handleSubmit = (e) => {
-        e.preventDefault();
-        update();
-      };
 
-      const update = async(e) => {
-        const { error } = await supabase.from('creators').update({name: formData.name, url: formData.url, description: formData.description, imageURL: formData.imageURL}).eq('id', id)
-      }
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({
+      ...formData,
+      [name]: value
+    });
+  };
 
-      const deleteCreator = async(e) => {
-        const response = await supabase
-        .from('creators')
-        .delete()
-        .eq('id', id)
-        navigate("/")
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    await update();
+  };
 
-      }
-    
-      return (
-        <>
-        <form onSubmit={handleSubmit}>
+  const update = async () => {
+    const { error } = await supabase.from('creators').update({
+      name: formData.name,
+      url: formData.url,
+      description: formData.description,
+      imageURL: formData.imageURL
+    }).eq('id', id);
+
+    if (!error) {
+      navigate('/');
+    }
+  };
+
+  const deleteCreator = async () => {
+    const response = await supabase
+      .from('creators')
+      .delete()
+      .eq('id', id);
+    navigate("/");
+  };
+
+  return (
+    <div className="form-container">
+      <form onSubmit={handleSubmit}>
         <h1>Edit Creator</h1>
+        <div className="grid">
           <div>
-            <h2>Creator Name</h2>
+            <label htmlFor="name">Creator Name</label>
             <input 
               type="text" 
               name="name" 
@@ -78,7 +88,7 @@ function EditCreator() {
             />
           </div>
           <div>
-            <h2>Creator URL</h2>
+            <label htmlFor="url">Creator URL</label>
             <input 
               type="text" 
               name="url" 
@@ -88,7 +98,7 @@ function EditCreator() {
             />
           </div>
           <div>
-            <h2>Creator Description</h2>
+            <label htmlFor="description">Creator Description</label>
             <textarea 
               name="description" 
               value={formData.description} 
@@ -97,7 +107,7 @@ function EditCreator() {
             />
           </div>
           <div>
-            <h2>Creator Image URL</h2>
+            <label htmlFor="imageURL">Creator Image URL</label>
             <input 
               type="text" 
               name="imageURL" 
@@ -106,12 +116,14 @@ function EditCreator() {
               required 
             />
           </div>
-          <button type="submit">Submit</button>
-        </form>
-        <button onClick={() => deleteCreator()}>Delete Creator</button>
-        </>
+        </div>
+        <button type="submit">Submit</button>
         
-      );
+      </form>
+      <button type="button" className="secondary" onClick={deleteCreator}>Delete Creator</button>
+      <Link to="/" className="fixed-return-link">Return to Home</Link>
+    </div>
+  );
 }
 
 export default EditCreator;

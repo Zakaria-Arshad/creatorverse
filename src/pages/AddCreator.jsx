@@ -1,5 +1,7 @@
 import { useState } from "react";
 import { supabase } from "../client.js"
+import { Link } from "react-router-dom";
+import '../styles/EditCreator.css'
 
 function AddCreator() {
     const [formData, setFormData] = useState({
@@ -33,10 +35,12 @@ function AddCreator() {
       }
     
       return (
-        <form onSubmit={handleSubmit}>
+        <div className="form-container">
+      <form onSubmit={handleSubmit}>
         <h1>Add Creator</h1>
+        <div className="grid">
           <div>
-            <h2>Creator Name</h2>
+            <label htmlFor="name">Creator Name</label>
             <input 
               type="text" 
               name="name" 
@@ -46,7 +50,7 @@ function AddCreator() {
             />
           </div>
           <div>
-            <h2>Creator URL</h2>
+            <label htmlFor="url">Creator URL</label>
             <input 
               type="text" 
               name="url" 
@@ -56,7 +60,7 @@ function AddCreator() {
             />
           </div>
           <div>
-            <h2>Creator Description</h2>
+            <label htmlFor="description">Creator Description</label>
             <textarea 
               name="description" 
               value={formData.description} 
@@ -65,7 +69,7 @@ function AddCreator() {
             />
           </div>
           <div>
-            <h2>Creator Image URL</h2>
+            <label htmlFor="imageURL">Creator Image URL</label>
             <input 
               type="text" 
               name="imageURL" 
@@ -74,8 +78,11 @@ function AddCreator() {
               required 
             />
           </div>
-          <button type="submit">Submit</button>
-        </form>
+        </div>
+        <button type="submit">Submit</button>
+      </form>
+      <Link to="/" className="fixed-return-link">Return to Home</Link>
+      </div>
       );
 }
 
