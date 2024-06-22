@@ -21,3 +21,9 @@
   .fixed-return-link:hover {
     background-color: darkgray;  
   }
+
+  .view-container {
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+  }

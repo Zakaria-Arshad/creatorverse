@@ -32,7 +32,7 @@ function ViewCreator() {
     }, [id]);
 
     return (
-        <div className="container">
+        <div className="view-container">
         <h1>View Creator</h1>
         <ContentCreator creator={{ id: id, name: creatorInfo.name, url: creatorInfo.url, description: creatorInfo.description, imageURL: creatorInfo.imageURL }} />
         <Link to="/" className="fixed-return-link">Return to Home</Link>
