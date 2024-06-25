@@ -35,7 +35,7 @@ The following **additional** features are implemented:
 
 Here's a walkthrough of implemented required features:
 
-![](https://github.com/Zakaria-Arshad/creatorverse/blob/main/tip103prework.gif)
+![](https://github.com/Zakaria-Arshad/creatorverse/blob/main/tip103prework2.gif)
 
 <!-- Replace this with whatever GIF tool you used! -->
 GIF created with ScreenToGif
