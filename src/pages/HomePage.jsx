@@ -19,7 +19,7 @@ function HomePage() {
   return (
     <>
       <div className="header-container">
-        <h1>The CreatorVerse 💫</h1>
+        <h1>The CreatorVerse 💫: Youtubers</h1>
         <Link to={`/add`} className="add-button-link">
           <button className="add-button">Add a creator</button>
         </Link>
